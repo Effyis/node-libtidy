@@ -9,27 +9,27 @@ var expect = chai.expect;
 var fork = require("htmltidy2");
 var clone = require("../").compat.htmltidy;
 
-describe("htmltidy interface:", function() {
+describe("htmltidy interface:", function () {
 
-  describe("tidy function:", function() {
+    describe("tidy function:", function () {
 
-    it("Handles a simple document the same way", function(done) {
-      var ores = null, cres = null;
-      var doc = '<!DOCTYPE html><html><head><title>test</title><p>Body</html>';
-      fork.tidy(doc, {}, function(err, doc) {
-        ores = {err: err, doc: doc};
-        if (cres) process.nextTick(compare);
-      });
-      clone.tidy(doc, {}, function(err, doc) {
-        cres = {err: err, doc: doc};
-        if (ores) process.nextTick(compare);
-      });
-      function compare() {
-        expect(cres.err).to.be.equal(ores.err);
-        expect(cres.doc).to.be.equal(ores.doc);
-        done();
-      }
+        it("Handles a simple document the same way", function (done) {
+            var ores = null, cres = null;
+            var doc = '<!DOCTYPE html><html><head><title>test</title><p>Body</html>';
+            fork.tidy(doc, {}, function (err, doc) {
+                ores = { err: err, doc: doc };
+                if (cres) process.nextTick(compare);
+            });
+            clone.tidy(doc, {}, function (err, doc) {
+                cres = { err: err, doc: doc };
+                if (ores) process.nextTick(compare);
+            });
+            function compare() {
+                expect(cres.err).to.be.equal(ores.err);
+                expect(cres.doc).to.be.equal(ores.doc);
+                done();
+            }
+        });
     });
-  });
 
 });
