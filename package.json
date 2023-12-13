@@ -1,84 +1,80 @@
 {
-  "name": "libtidy",
-  "version": "0.3.8",
-  "description": "Node bindings to the HTML Tidy library",
-  "main": "src/index.js",
-  "bin": {
-    "htmltidy": "src/cli.js"
-  },
-  "binary": {
-    "module_name": "tidy",
-    "module_path": "./lib/",
-    "host": "https://github.com",
-    "remote_path": "./gagern/node-libtidy/releases/download/v{version}/",
-    "package_name": "{node_abi}-{platform}-{arch}.tar.gz"
-  },
-  "types": "src/index.d.ts",
-  "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
-    "prepublish": "node util/gen-typescript-decl.js",
-    "pretest": "node util/gen-typescript-decl.js",
-    "test_": "mocha --compilers ts:ts-node/register",
-    "test__": "mocha",
-    "test": "node --trace-deprecation ./node_modules/.bin/mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gagern/node-libtidy.git"
-  },
-  "keywords": [
-    "htmltidy",
-    "libtidy",
-    "tidylib",
-    "html",
-    "tidy",
-    "html5",
-    "beautify",
-    "format",
-    "indent"
-  ],
-  "author": "Martin von Gagern <Martin.vGagern@gmx.net>",
-  "contributors": [
-    "Raphael Ackermann <raphael.ackermann@gmail.com>",
-    "Wang Guan <momocraft@gmail.com>"
-  ],
-  "license": "MIT",
-  "gypfile": true,
-  "bugs": {
-    "url": "https://github.com/gagern/node-libtidy/issues"
-  },
-  "homepage": "https://github.com/gagern/node-libtidy#readme",
-  "devDependencies": {
-    "@types/chai": "^4.3.11",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.10.0",
-    "chai": "^4.3.10",
-    "chai-subset": "^1.6.0",
-    "htmltidy2": "^1.1.1",
-    "mocha": "^10.2.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.3.2"
-  },
-  "dependencies": {
-    "@mapbox/node-pre-gyp": "^1.0.11",
-    "nan": "^2.18.0"
-  },
-  "bundledDependencies": [
-    "node-pre-gyp"
-  ],
-  "files": [
-    "src/",
-    "test/",
-    "/*.js",
-    "/*.md",
-    "binding.gyp",
-    "tidy-html5/version.txt",
-    "tidy-html5/README.md",
-    "tidy-html5/README/",
-    "tidy-html5/src/",
-    "tidy-html5/include/"
-  ],
-  "bundleDependencies": [
-    "node-pre-gyp"
-  ]
+    "name": "@effyis/libtidy",
+    "version": "0.5.0",
+    "description": "Node bindings to the HTML Tidy library",
+    "main": "src/index.js",
+    "bin": {
+        "htmltidy": "src/cli.js"
+    },
+    "_binary_": {
+        "module_name": "tidy",
+        "module_path": "./lib/",
+        "host": "https://github.com",
+        "remote_path": "./Effyis/node-libtidy/releases/download/v{version}/",
+        "package_name": "{node_abi}-{platform}-{arch}.tar.gz"
+    },
+    "types": "src/index.d.ts",
+    "scripts": {
+        "install": "npx node-pre-gyp install --fallback-to-build",
+        "prepublish": "node util/gen-typescript-decl.js",
+        "pretest": "node util/gen-typescript-decl.js",
+        "test": "mocha --require ts-node/register",
+        "test-trace": "node --trace-deprecation ./node_modules/.bin/mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Effyis/node-libtidy.git"
+    },
+    "keywords": [
+        "htmltidy",
+        "libtidy",
+        "tidylib",
+        "html",
+        "tidy",
+        "html5",
+        "beautify",
+        "format",
+        "indent"
+    ],
+    "author": "Martin von Gagern <Martin.vGagern@gmx.net>",
+    "contributors": [
+        "Raphael Ackermann <raphael.ackermann@gmail.com>",
+        "Wang Guan <momocraft@gmail.com>"
+    ],
+    "license": "MIT",
+    "gypfile": true,
+    "bugs": {
+        "url": "https://github.com/Effyis/node-libtidy/issues"
+    },
+    "homepage": "https://github.com/Effyis/node-libtidy#readme",
+    "dependencies": {
+        "@mapbox/node-pre-gyp": "^1.0.11",
+        "nan": "^2.18.0"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.11",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "^20.10.0",
+        "chai": "^4.3.10",
+        "chai-subset": "^1.6.0",
+        "htmltidy2": "^1.1.1",
+        "mocha": "^10.2.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.3.2"
+    },
+    "bundleDependencies": [
+        "node-pre-gyp"
+    ],
+    "files": [
+        "src/",
+        "test/",
+        "/*.js",
+        "/*.md",
+        "binding.gyp",
+        "tidy-html5/version.txt",
+        "tidy-html5/README.md",
+        "tidy-html5/README/",
+        "tidy-html5/src/",
+        "tidy-html5/include/"
+    ]
 }
