@@ -1,6 +1,6 @@
 {
     "name": "@effyis/libtidy",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Node bindings to the HTML Tidy library",
     "main": "src/index.js",
     "bin": {
