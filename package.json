@@ -6,7 +6,7 @@
     "bin": {
         "htmltidy": "src/cli.js"
     },
-    "_binary_": {
+    "binary": {
         "module_name": "tidy",
         "module_path": "./lib/",
         "host": "https://github.com",
@@ -58,7 +58,7 @@
         "chai": "^4.3.10",
         "chai-subset": "^1.6.0",
         "htmltidy2": "^1.1.1",
-        "mocha": "^10.2.0",
+        "mocha": "^10.8.2",
         "ts-node": "^10.9.1",
         "typescript": "^5.3.2"
     },
