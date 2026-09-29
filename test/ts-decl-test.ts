@@ -8,61 +8,60 @@ import { expect } from 'chai';
 
 import * as libtidy from '../';
 
+function dummyCB(err: Error | null, result: { errlog?: string, output?: Buffer } | null) { }
+
 describe('index.d.ts', () => {
-  const testDoc1 = Buffer.from('<!DOCTYPE html>\n<html><head></head>\n' +
-    '<body><p>foo</p></body></html>');
+    const testDoc1 = Buffer.from('<!DOCTYPE html>\n<html><head></head>\n<body><p>foo</p></body></html>');
 
-  let doc: libtidy.TidyDoc;
+    let doc: libtidy.TidyDoc;
 
-  beforeEach(() => {
-    doc = libtidy.TidyDoc();
-  });
+    beforeEach(() => {
+        doc = libtidy.TidyDoc();
+    });
 
-  it("has sync tidy API", () => {
-    // not actually calling the API
-    if (1) return;
+    it("has sync tidy API", () => {
+        // not actually calling the API
+        if (1) return;
 
-    doc.parseBufferSync(testDoc1);
-    var res = doc.cleanAndRepairSync();
-    const diag: string = doc.runDiagnosticsSync();
-    const buf: Buffer = doc.saveBufferSync();
-  });
+        doc.parseBufferSync(testDoc1);
+        var res = doc.cleanAndRepairSync();
+        const diag: string = doc.runDiagnosticsSync();
+        const buf: Buffer = doc.saveBufferSync();
+    });
 
-  it("has async tidy API", () => {
-    if (1) return;
+    it("has async tidy API", () => {
+        if (1) return;
 
-    doc.parseBuffer(testDoc1, dummyCB);
-    doc.cleanAndRepair(dummyCB);
-    doc.runDiagnostics(dummyCB);
-    doc.saveBuffer(dummyCB);
-    doc.tidyBuffer(testDoc1, dummyCB);
-  });
+        doc.parseBuffer(testDoc1, dummyCB);
+        doc.cleanAndRepair(dummyCB);
+        doc.runDiagnostics(dummyCB);
+        doc.saveBuffer(dummyCB);
+        doc.tidyBuffer(testDoc1, dummyCB);
+    });
 
-  it("has option set / get API", () => {
-    doc.optSet("alt-text", "foo");
-    expect(doc.optGet("alt_text")).to.eq('foo');
-    expect(doc.optGet("AltText")).to.eq('foo');
+    it("has option set / get API", () => {
+        doc.optSet("alt-text", "foo");
+        expect(doc.optGet("alt_text")).to.eq('foo');
+        expect(doc.optGet("AltText")).to.eq('foo');
 
-    doc.optSet("wrap", 82);
-    expect(doc.optGet("Wrap")).to.eq(82);
+        doc.optSet("wrap", 82);
+        expect(doc.optGet("Wrap")).to.eq(82);
 
-    doc.options = {
-      wrap: 83,
-      input_encoding: "win1252"
-    };
+        doc.options = {
+            wrap: 83,
+            input_encoding: "win1252"
+        };
 
-    expect(doc.optGet("Wrap")).to.eq(83);
-    expect(doc.optGet("input-encoding")).to.eq("win1252");
+        expect(doc.optGet("Wrap")).to.eq(83);
+        expect(doc.optGet("input-encoding")).to.eq("win1252");
 
-    expect(doc.getOption('char-encoding'))
-      .to.be.instanceof(libtidy.TidyOption);
+        expect(doc.getOption('char-encoding'))
+            .to.be.instanceof(libtidy.TidyOption);
 
-    // libtidy.TidyOption is not callable with () or new
-    // libtidy.TidyOption();
-    // new libtidy.TidyOption);
-  });
+        // libtidy.TidyOption is not callable with () or new
+        // libtidy.TidyOption();
+        // new libtidy.TidyOption);
+    });
 });
-
-function dummyCB(err: Error, result: { errlog: string, output: Buffer }) { }
 
 // vim: shiftwidth=2
