@@ -55,3 +55,5 @@ No working CI exists for this repo — `.travis.yml` and `appveyor.yml` are dead
 ## Ownership
 
 Primary maintainer and contact: Aleksandar Mitic (amitic@socialgist.com).
+
+Owner: Aleksandar Mitic, CLAUDE.md last updated: 2026-09-29
